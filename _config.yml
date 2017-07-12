@@ -12,9 +12,9 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://mrxin.wang
+url: http://www.mrxin.wang
 root: /
-permalink: title.html
+permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 # Directory
@@ -66,15 +66,31 @@ pagination_dir: page
 #theme: landscape
 theme: next
 
+baidu_url_submit:
+  count: 1 ## 提交最新的一个链接
+  host: mrxin.wang ## 在百度站长平台中注册的域名
+  token: wmxbzjQuv5KUUL4M ## 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: https://github.com/mojia/mojia.github.io.git
   branch: master
+- type: baidu_url_submitter ## 这是新加的
+
 
 # hexo-admin authentification
 admin:
   username: mojia
   password_hash: $2a$10$yGMVMyHdi8IHfkfo/xJ6RuaPmffN9T/kT5Nk2CoKhLuY2c15P9cri
   secret: my super secret 
+
+
+# add post views
+leancloud_visitors:
+  enable: true
+  app_id: LvRtybubpk55rrfjiOkF5EL0-gzGzoHsz
+  app_key: F1YCeYtkOehddvyCvGyPWEs3
